@@ -13,6 +13,11 @@ console.log(`URL: ${URL} - ${typeof(URL)}  localPath: ${localPath} - ${typeof(lo
 
 console.log('request');
 request(URL, (error, response, body) => {
+
+  if (error) {
+    console.error(error);
+    return;
+  }
   console.log('error:', error); // Print the error if one occurred
   console.log('statusCode:', response && response.statusCode); // Print the
   fs.writeFile(localPath, body, err => {
